@@ -9,20 +9,20 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class ScreenShot {
-	WebDriver driver;
-	String path;
+    WebDriver driver;
+    String path;
 
-	public ScreenShot(WebDriver driver, String path) {
-		this.path = path;
-		this.driver = driver;
-	}
+    public ScreenShot(WebDriver driver, String path) {
+        this.driver = driver;
+        this.path = path;
+    }
 
-	public String saveScreenShots() throws IOException {
-		TakesScreenshot shot = (TakesScreenshot) driver;
-		File SrcFile = shot.getScreenshotAs(OutputType.FILE);
-		String path1 = path + System.currentTimeMillis() + ".png";
-		File DestFile = new File(path1);
-		FileUtils.copyFile(SrcFile, DestFile);
-		return path1;
-	}
+    public String saveScreenShots() throws IOException {
+        TakesScreenshot shot = (TakesScreenshot) driver;
+        File srcFile = shot.getScreenshotAs(OutputType.FILE);
+        String fullPath = path + System.currentTimeMillis() + ".png";
+        File destFile = new File(fullPath);
+        FileUtils.copyFile(srcFile, destFile);
+        return fullPath;
+    }
 }

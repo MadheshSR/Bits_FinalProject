@@ -1,22 +1,23 @@
 package com.mindtree.utilities;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
-import com.mindtree.exceptions.UtilityException;
-
 public class GetProperties {
-	public static Properties get;
 
-	public GetProperties() throws UtilityException, Exception {
-		if (get == null) {
-			try {
-				get = new Properties();
-				FileInputStream fs = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
-				get.load(fs);
-			} catch (Exception e) {
-				throw new UtilityException(e.getMessage());
-			}
-		}
-	}
+    public static Properties get;
+
+    public static void loadProperties() throws IOException {
+        if (get == null) {
+            get = new Properties();
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
+            get.load(fis);
+        }
+    }
+
+    public static String getProperty(String key) throws IOException {
+        if (get == null) loadProperties();
+        return get.getProperty(key);
+    }
 }

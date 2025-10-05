@@ -1,43 +1,65 @@
 package com.mindtree.reusableComponent;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import org.apache.log4j.Logger;
-import com.mindtree.exceptions.UtilityException;
-import com.mindtree.utilities.GetProperties;
 
-public class Base extends GetProperties {
-	protected static Logger log;
-	protected static ExtentTest test;
-	protected static ExtentReports report;
+public class Base {
 
-	public Base() throws UtilityException, Exception {
-		super();
-	}
+    private static WebDriver driver;
+    public static ExtentReports report;
 
-	public static void initializeReport() {
-		if (report == null)
-			report = new ExtentReports(System.getProperty("user.dir") + "\\reports\\" + "ExtentReportResults-"
-					+ System.currentTimeMillis() + "-.html");
-	}
+    // Load properties from file
+    private static Properties prop = new Properties();
 
-	public static WebDriver initialize() throws Exception {
-		WebDriver driver = null;
-		if (driver == null) {
-			if (get.getProperty("browser").equals("chrome")) {
-				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + get.getProperty("path"));
-				ChromeOptions opt = new ChromeOptions();
-				opt.addArguments("--disable-notifications");
-				driver = new ChromeDriver(opt);
-			} else if (get.getProperty("browser").equals("firefox")) {
+    static {
+        try {
+            FileInputStream fis = new FileInputStream("src/test/resources/config.properties");
+            prop.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-			} else if (get.getProperty("browser").equals("IE")) {
+        // Initialize ExtentReports
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String reportPath = System.getProperty("user.dir") + "/Reports/ExtentReport_" + timestamp + ".html";
+        report = new ExtentReports(reportPath, true);
+    }
+        //report = new ExtentReports(System.getProperty("user.dir") + "/Reports/ExtentReport.html", true);
+    
 
-			}
-		}
-		return driver;
-	}
+    // Get WebDriver instance
+    public static WebDriver getDriver() throws Exception {
+        if (driver == null) {
+            String chromePath = prop.getProperty("chromedriverPath");
+            if (chromePath == null || chromePath.isEmpty()) {
+                throw new Exception("chromedriverPath not set in config.properties");
+            }
+
+            System.setProperty("webdriver.chrome.driver", chromePath);
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+        }
+        return driver;
+    }
+
+    // Quit driver
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
+    // Get property from config
+    public static String getProperty(String key) {
+        return prop.getProperty(key);
+    }
 }

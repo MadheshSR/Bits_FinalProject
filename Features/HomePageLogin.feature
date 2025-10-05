@@ -1,13 +1,9 @@
-Feature: Log in Validation
+Feature: Signup close
 
   @HomePageLogin
-  Scenario Outline: Validating With valid UserName And Password
+  Scenario Outline: Validating Signup Dialog box Close
     Given URl opened with URL for login
-    Then Clicked one Sign in button
-    Then Enter Valid "<UName>" and "<Pwd>"
-    And click one log in button
-    Then user will redirect to my account page
+    Then Clicked one Signup window close 
+    Then user will direct to home page
 
-    Examples: 
-      | UName                   | Pwd   |
-      | motog05052000@gmail.com | 12345 |
+ 
