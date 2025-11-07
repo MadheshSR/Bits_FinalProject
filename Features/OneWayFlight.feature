@@ -15,4 +15,4 @@ Feature: Oneway Flight Automate
 
     Examples:
       | From      | To        | Date            | Adults | Children | TravelClass | Mobileno  | Email                     | BillingAddress         | PinCode |
-      | Chennai   | Mumbai    | Fri Oct 17 2025 | 2      | 1        | Economy     | 8489127046 | madheshmaddy080@gmail.com | 2,vaigai st,thiruvallur | 602002  |
+      | Chennai   | Mumbai    | Tue Dec 02 2025 | 2      | 1        | Economy     | 8489127046 | madheshmaddy080@gmail.com | 2,vaigai st,thiruvallur | 602002  |
