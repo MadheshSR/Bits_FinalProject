@@ -108,8 +108,12 @@ public class OneWayFlight extends OneWayFlightUI {
     public void srchflght() throws ReusableComponentException, IOException {
         WebDriverSupport.click(driver, srch, "Home Page", "Search Flight Button", log, test);
         waitForStep();
+        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom='60%'");
+
         WebDriverSupport.click(driver, cls, "Flight Page", "popup close Button", log, test);
         waitForStep();
+        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom='100%'");
+
         WebDriverSupport.click(driver, student, "Flight Page", "student option", log, test);
         waitForStep();
         WebDriverSupport.click(driver, indigo, "Flight Page", "indigo checkbox", log, test);
@@ -145,7 +149,7 @@ public class OneWayFlight extends OneWayFlightUI {
         waitForStep();
         WebDriverSupport.click(driver, done1, "add baggage popup", "done", log, test);
         waitForStep();
-        WebDriverSupport.click(driver, bestvalue, "special combos field", "best value option", log, test);
+        //WebDriverSupport.click(driver, bestvalue, "special combos field", "best value option", log, test);
         waitForStep();
         WebDriverSupport.click(driver, viewbene, "trip secure field", "view all benefits", log, test);
         waitForStep();

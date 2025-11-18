@@ -22,7 +22,7 @@ public class OneWayFlightUI {
 
     // Search
     public By srch = By.xpath("//a[normalize-space()='Search']");
-    public By cls = By.xpath("//span[@class='bgProperties overlayCrossIcon icon20']");
+    public By cls = By.xpath("//span[@class='newCrossIconV2']");
     public By student = By.xpath("//span[normalize-space()='Student']");
     public By indigo = By.xpath("(//p[contains(text(),'Non Stop')])[1]");
     public By tym = By.xpath("//div[@class='filtersOuter']//div//div[1]//div[1]//div[2]");
