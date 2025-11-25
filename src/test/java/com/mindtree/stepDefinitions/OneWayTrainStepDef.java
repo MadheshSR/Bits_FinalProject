@@ -62,10 +62,10 @@ public class OneWayTrainStepDef {
         onewaytr.Toplc(To);
     }
     
-   /* @Then("select Departure {string}")
+    @Then("select Departure {string}")
     public void selectDepartureDate(String date) throws Exception {
         onewaytr.Seldt(date);
-    }*/
+    }
 
    
 

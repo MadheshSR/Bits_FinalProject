@@ -8,6 +8,7 @@ Scenario Outline:Book OnewayTrain dynamically
     Then Click on Trains 
     And Enter FromStation "<From>"
     And Enter ToStation "<To>"
+    Then select Departure "<date>"
     Then Click on Search Trains
     
     Examples:

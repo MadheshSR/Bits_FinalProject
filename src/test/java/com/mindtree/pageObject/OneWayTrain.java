@@ -65,24 +65,31 @@ public class OneWayTrain extends OneWayTrainUI {
         WebDriverSupport.click(driver, tost, "To Field", "To Place Name", log, test);
         waitForStep();
         WebDriverSupport.click(driver, tdy, "To Field", "To Place Name", log, test);
+        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom='60%'");
+
 
     }
     
     
-    /*public void Seldt(String date) throws ReusableComponentException {
+    public void Seldt(String date) throws ReusableComponentException {
         WebDriverSupport.click(driver, datee, "Home Page", "Departure Date Picker", log, test);
         waitForStep();
-        //WebDriverSupport.click(driver, dat, "Home Page", "Departure Date", log, test);
 
-      WebDriverSupport.click(driver, By.xpath("//div[contains(@class,'styles_dayCmp__calDtVwWrp')]//p[text()='" + date + "']"),
-               "Date Picker", "Selected Date", log, test);
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)");
+
+        WebDriverSupport.click(driver, dat, "Home Page", "Departure Date", log, test);
+
+      //WebDriverSupport.click(driver, By.xpath("//div[contains(@class,'styles_dayCmp__calDtVwWrp')]//p[text()='" + date + "']"),
+               //"Date Picker", "Selected Date", log, test);
         waitForStep();
+        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom='100%'");
 
-    }*/
+
+    }
 
 
     public void srchtrains() throws ReusableComponentException, IOException {
-        // Close any open popups (calendar)
+       /* // Close any open popups (calendar)
         closeCalendarIfOpen();
         closeAutoSuggestIfOpen();
 
@@ -138,7 +145,9 @@ public class OneWayTrain extends OneWayTrainUI {
             }
         } catch (Exception e) {
             System.out.println("Error closing autosuggest dropdown, continuing...");
-        }
+        }*/
+        WebDriverSupport.click(driver, srchtr, "Home Page", "Search Train Button", log, test);
+
     }
     
     

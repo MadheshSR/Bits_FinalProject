@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.relevantcodes.extentreports.ExtentReports;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Base {
 
     private static WebDriver driver;
@@ -36,19 +38,17 @@ public class Base {
     
 
     // Get WebDriver instance
-    public static WebDriver getDriver() throws Exception {
+    public static WebDriver getDriver() {
         if (driver == null) {
-            String chromePath = prop.getProperty("chromedriverPath");
-            if (chromePath == null || chromePath.isEmpty()) {
-                throw new Exception("chromedriverPath not set in config.properties");
-            }
+            // Automatically downloads correct ChromeDriver version
+            WebDriverManager.chromedriver().setup();
 
-            System.setProperty("webdriver.chrome.driver", chromePath);
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
         return driver;
     }
+
 
     // Quit driver
     public static void quitDriver() {

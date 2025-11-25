@@ -16,7 +16,7 @@ public class OneWayTrainUI {
     public By tost = By.xpath("//span[normalize-space()='Bangalore City Junction']");
 
     public By datee = By.xpath("//p[normalize-space()='Departure']");
-    public By dat = By.xpath("//div[h2[contains(text(),'November 2025')]]//p[normalize-space()='29']");
+    public By dat = By.xpath("//p[text()='November 2025']/ancestor::div[contains(@class,'styles_calMnth__mnthNmWrp')]/following-sibling::div[contains(@class,'styles_calMnth__calDateWrap')]//div//p[contains(text(),'28')]");
     public By body = By.tagName("body");
     public By tdy = By.xpath("//span[normalize-space()='Today']");
 
