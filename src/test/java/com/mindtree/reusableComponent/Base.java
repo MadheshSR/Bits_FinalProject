@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.relevantcodes.extentreports.ExtentReports;
 
@@ -43,6 +44,14 @@ public class Base {
             // Automatically downloads correct ChromeDriver version
             WebDriverManager.chromedriver().setup();
 
+         // 🌟 ADDED CHROME OPTIONS FOR HEADLESS/LINUX STABILITY 🌟
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");             // Ensure headless mode is activated
+            options.addArguments("--no-sandbox");           // Critical for running on CI/Linux
+            options.addArguments("--disable-dev-shm-usage"); // Recommended for memory issues
+            options.addArguments("--window-size=1920,1080"); // Set default screen resolution
+            // 🌟 END OF CHROME OPTIONS 🌟
+            
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
