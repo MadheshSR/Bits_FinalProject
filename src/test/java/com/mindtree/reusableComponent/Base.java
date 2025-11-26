@@ -52,7 +52,7 @@ public class Base {
             options.addArguments("--window-size=1920,1080"); // Set default screen resolution
             // 🌟 END OF CHROME OPTIONS 🌟
             
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
         return driver;
